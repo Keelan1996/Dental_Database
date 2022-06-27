@@ -1,0 +1,30 @@
+Keelan Duddy database project
+
+in the php files i've changed them to localhost and root, because I already sent
+the video of them using the virtual machine and it will be turned off now.
+
+For the patientDetails table, you can't copy from notepad++ and paste 
+it right into wamp. you need to paste it from Notepad for the format to be 
+correct.
+
+I've given it here also:
+
+create table PatientDetails (
+  patientNo tinyint unsigned NOT NULL auto_increment,  
+  firstName varchar(45) NOT NULL, 
+  lastName varchar(45) NOT NULL,
+  DOB date NOT NULL,
+  email varchar(45) NOT NULL,
+  billAddress varchar(45) NOT NULL,
+  appointmentNo tinyint unsigned NOT NULL,
+  specializeIn ENUM ('Orthadontist','Periodontist','Prosthodontist') NOT NULL,
+  billId tinyint unsigned NOT NULL,
+  patientImage LONGBLOB DEFAULT NULL,           # Picture in DATABASE as BLOB (up to 4.2GB)
+  Picture_Path varchar(20) DEFAULT NULL,   # Path to where picture is stored in file system
+ 
+  PRIMARY KEY (patientNo),
+  FOREIGN KEY (appointmentNo) REFERENCES appointment(appointmentNo),
+  FOREIGN KEY (billId) REFERENCES bill(billId)
+  ); 
+
+
